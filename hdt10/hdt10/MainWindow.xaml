@@ -5,8 +5,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:hdt10"
         mc:Ignorable="d"
-        Title="MainWindow" Height="350" Width="525">
-    <Grid>
+        Title="Hoja de Trabajo 10" Height="502.433" Width="851">
+    <Grid x:Name="grid_Main">
         
     </Grid>
 </Window>
