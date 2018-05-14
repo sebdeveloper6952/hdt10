@@ -1,7 +1,7 @@
 NODOS
--doctores {}
--pacientes {}
--medicinas {}
+-doctores {nombre, colegiado, especialidad, telefono}
+-pacientes {nombre, telefono}
+-medicinas {nombre, desde, hasta, dosis}
 
 RELACIONES
 -(doctor)-[:PRESCRIBE {desde, hasta}]->(medicina)
