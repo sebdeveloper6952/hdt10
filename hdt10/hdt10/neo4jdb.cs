@@ -17,6 +17,79 @@ namespace hdt10
             driver = GraphDatabase.Driver(uri, AuthTokens.Basic(user, password));
         }
 
+        public void AddPatient(string nombre, string telefono)
+        {
+            using (var session = driver.Session())
+            {
+                var person = session.WriteTransaction(tx =>
+                {
+                    var result = tx.Run("CREATE (a:Patient) " +
+                                        "SET a.nombre = $nombre " +
+                                        "SET a.telefono = $telefono " +
+                                        "RETURN a",
+                        new { nombre, telefono });
+                    return result.Single()[0].As<string>();
+                });
+                Console.WriteLine(person);
+            }
+        }
+
+        public void AddDoctor(string nombre, int colegiado, string especialidad,
+            string telefono)
+        {
+            using (var session = driver.Session())
+            {
+                var person = session.WriteTransaction(tx =>
+                {
+                    var result = tx.Run("CREATE (a:Person) " +
+                                        "SET a.nombre = $nombre " +
+                                        "SET a.colegiado = $colegiado"  + 
+                                        "SET a.especialidad = $especialidad " +
+                                        "SET a.telefono = $telefono " +
+                                        "RETURN a",
+                        new { nombre, colegiado, especialidad, telefono });
+                    return result.Single()[0].As<string>();
+                });
+                Console.WriteLine(person);
+            }
+        }
+
+        public void AddMedicine(string nombre, string desde, string hasta, string dosis)
+        {
+            using (var session = driver.Session())
+            {
+                var person = session.WriteTransaction(tx =>
+                {
+                    var result = tx.Run("CREATE (m:Medicina) " +
+                                        "SET m.nombre = $nombre " +
+                                        "SET m.desde = $desde " +
+                                        "SET m.hasta = $hasta " +
+                                        "SET m.dosis = $dosis " +
+                                        "RETURN m",
+                        new { nombre, desde, hasta });
+                    return result.Single()[0].As<string>();
+                });
+                Console.WriteLine(person);
+            }
+        }
+
+        public void PatientVisitsDoctor(string nombrePaciente, string nombreDoctor, string nombreMedicina,
+            string fecha)
+        {
+            using (var session = driver.Session())
+            {
+                var person = session.WriteTransaction(tx =>
+                {
+                    var result = tx.Run("MATCH (p:Paciente {nombre:$nombrePaciente}), " +
+                        "(d:Doctor {nombre:$nombreDoctor}) " + 
+                        "CREATE (p)-[:VISITA {fecha:$fecha}]->(d) RETURN p, d",
+                        new { nombrePaciente, nombreDoctor, nombreMedicina, fecha });
+                    return result.Single()[0].As<string>();
+                });
+                Console.WriteLine(person);
+            }
+        }
+
         public void Dispose()
         {
             driver?.Dispose();
