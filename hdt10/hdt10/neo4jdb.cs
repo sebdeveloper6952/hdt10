@@ -82,7 +82,7 @@ namespace hdt10
                 {
                     var result = tx.Run("MATCH (p:Paciente {nombre:$nombrePaciente}), " +
                         "(d:Doctor {nombre:$nombreDoctor}) " + 
-                        "CREATE (p)-[:VISITA {fecha:$fecha}]->(d) RETURN p, d",
+                        "CREATE (p)-[:VISITA]->(d) RETURN p, d",
                         new { nombrePaciente, nombreDoctor, nombreMedicina, fecha });
                     return result.Single()[0].As<string>();
                 });

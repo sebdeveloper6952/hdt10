@@ -24,5 +24,27 @@ namespace hdt10
         {
             InitializeComponent();
         }
+
+
+
+        private void bnt_AgregarPaciente_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void btn_Visitar_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void btn_AgregarDoctores_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void btn_PersonaConocePersona_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }
