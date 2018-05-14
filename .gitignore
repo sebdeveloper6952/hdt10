@@ -190,3 +190,10 @@ git_stats/*
 StyleCop.Cache
 bin
 obj
+hdt10/hdt10/packages\.config
+
+hdt10/packages/Neo4j\.Driver\.1\.6\.0/lib/net452/Neo4j\.Driver\.xml
+
+hdt10/packages/Neo4j\.Driver\.1\.6\.0/Neo4j\.Driver\.1\.6\.0\.nupkg
+
+hdt10/packages/Neo4j\.Driver\.1\.6\.0/lib/netstandard1\.3/Neo4j\.Driver\.xml
