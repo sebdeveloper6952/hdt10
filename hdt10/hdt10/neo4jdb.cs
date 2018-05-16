@@ -23,7 +23,7 @@ namespace hdt10
             {
                 var person = session.WriteTransaction(tx =>
                 {
-                    var result = tx.Run("CREATE (a:Patient) " +
+                    var result = tx.Run("CREATE (a:Paciente) " +
                                         "SET a.nombre = $nombre " +
                                         "SET a.telefono = $telefono " +
                                         "RETURN a",
@@ -34,16 +34,16 @@ namespace hdt10
             }
         }
 
-        public void AddDoctor(string nombre, int colegiado, string especialidad,
+        public void AddDoctor(string nombre, string colegiado, string especialidad,
             string telefono)
         {
             using (var session = driver.Session())
             {
                 var person = session.WriteTransaction(tx =>
                 {
-                    var result = tx.Run("CREATE (a:Person) " +
+                    var result = tx.Run("CREATE (a:Doctor) " +
                                         "SET a.nombre = $nombre " +
-                                        "SET a.colegiado = $colegiado"  + 
+                                        "SET a.colegiado = $colegiado "  + 
                                         "SET a.especialidad = $especialidad " +
                                         "SET a.telefono = $telefono " +
                                         "RETURN a",
@@ -54,7 +54,7 @@ namespace hdt10
             }
         }
 
-        public void AddMedicine(string nombre, string desde, string hasta, string dosis)
+        public void AddMedicine(string nombre)
         {
             using (var session = driver.Session())
             {
@@ -62,31 +62,45 @@ namespace hdt10
                 {
                     var result = tx.Run("CREATE (m:Medicina) " +
                                         "SET m.nombre = $nombre " +
-                                        "SET m.desde = $desde " +
-                                        "SET m.hasta = $hasta " +
-                                        "SET m.dosis = $dosis " +
                                         "RETURN m",
-                        new { nombre, desde, hasta });
+                        new { nombre });
                     return result.Single()[0].As<string>();
                 });
                 Console.WriteLine(person);
             }
         }
 
-        public void PatientVisitsDoctor(string nombrePaciente, string nombreDoctor, string nombreMedicina,
-            string fecha)
+        public void PatientVisitsDoctor(string paciente, string doctor, string medicina,
+            string fecha, string desde, string hasta, string dosis)
         {
             using (var session = driver.Session())
             {
                 var person = session.WriteTransaction(tx =>
                 {
-                    var result = tx.Run("MATCH (p:Paciente {nombre:$nombrePaciente}), " +
-                        "(d:Doctor {nombre:$nombreDoctor}) " + 
-                        "CREATE (p)-[:VISITA]->(d) RETURN p, d",
-                        new { nombrePaciente, nombreDoctor, nombreMedicina, fecha });
+                    var result = tx.Run("MATCH (p:Paciente {nombre:$paciente}), " + 
+                        "(d:Doctor {nombre:$doctor}), " + 
+                        "(m:Medicina {nombre:$medicina}) " +
+                        "CREATE (p)-[:VISITA {fecha:$fecha}]->(d)" + 
+                        "-[:PRESCRIBE {desde:$desde, hasta:$hasta, dosis:$dosis}]->(m)<-[:TOMA]-(p) RETURN p",
+                        new { paciente, doctor, medicina, fecha, desde, hasta, dosis });
                     return result.Single()[0].As<string>();
                 });
                 Console.WriteLine(person);
+            }
+        }
+
+        public void ConnectPersons(string person0, string person1)
+        {
+            using (var session = driver.Session())
+            {
+                var person = session.WriteTransaction(tx =>
+                {
+                    var result = tx.Run("MATCH (p0 {nombre:$person0}), " +
+                        "(p1 {nombre:$person1}) " +  
+                        "CREATE (p0)-[:CONOCE]->(p1) RETURN p0",
+                        new { person0, person1 });
+                    return result.Single()[0].As<string>();
+                });
             }
         }
 

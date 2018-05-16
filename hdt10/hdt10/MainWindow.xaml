@@ -14,8 +14,8 @@
                         <Grid HorizontalAlignment="Left" Width="271" Margin="0,0,-2.333,-13.333">
                             <Label x:Name="lbl_NombrePaciente" Content="Nombre" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top"/>
                             <Label Content="Telefono" HorizontalAlignment="Left" Margin="10,41,0,0" VerticalAlignment="Top"/>
-                            <TextBox HorizontalAlignment="Left" Height="23" Margin="100,10,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
-                            <TextBox HorizontalAlignment="Left" Height="23" Margin="100,45,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+                            <TextBox x:Name="txtBox_AgregarPaciente_Nombre" HorizontalAlignment="Left" Height="23" Margin="100,10,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+                            <TextBox x:Name="txtBox_AgregarPaciente_Tel" HorizontalAlignment="Left" Height="23" Margin="100,45,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
                             <Button x:Name="bnt_AgregarPaciente" Content="Agregar" HorizontalAlignment="Left" Margin="89,83,0,0" VerticalAlignment="Top" Width="75" Click="bnt_AgregarPaciente_Click"/>
                         </Grid>
                     </GroupBox>
@@ -23,35 +23,52 @@
                         <Grid HorizontalAlignment="Left" Width="271" Margin="0,0,-2.333,-13.667">
                             <Label Content="Nombre" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top"/>
                             <Label Content="Colegiado" HorizontalAlignment="Left" Margin="10,49,0,0" VerticalAlignment="Top"/>
-                            <TextBox HorizontalAlignment="Left" Height="23" Margin="99,14,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
-                            <TextBox HorizontalAlignment="Left" Height="23" Margin="99,52,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+                            <TextBox x:Name="txtBox_AgregarDoctor_Nombre" HorizontalAlignment="Left" Height="23" Margin="99,14,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+                            <TextBox x:Name="txtBox_AgregarDoctor_Col" HorizontalAlignment="Left" Height="23" Margin="99,52,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
                             <Label Content="Especialidad" HorizontalAlignment="Left" Margin="10,89,0,0" VerticalAlignment="Top"/>
-                            <TextBox HorizontalAlignment="Left" Height="23" Margin="99,92,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
-                            <TextBox HorizontalAlignment="Left" Height="23" Margin="99,132,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+                            <TextBox x:Name="txtBox_AgregarDoctor_Esp" HorizontalAlignment="Left" Height="23" Margin="99,92,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+                            <TextBox x:Name="txtBox_AgregarDoctor_Tel" HorizontalAlignment="Left" Height="23" Margin="99,132,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
                             <Label Content="Telefono" HorizontalAlignment="Left" Margin="10,130,0,0" VerticalAlignment="Top" Width="64"/>
                             <Button x:Name="btn_AgregarDoctores" Content="Agregar" HorizontalAlignment="Left" Margin="89,172,0,0" VerticalAlignment="Top" Width="75" Click="btn_AgregarDoctores_Click"/>
                         </Grid>
                     </GroupBox>
-                    <GroupBox Header="Paciente Visita Doctor" HorizontalAlignment="Left" Height="229" Margin="296,10,0,0" VerticalAlignment="Top" Width="231">
+                    <GroupBox Header="Paciente Visita Doctor" HorizontalAlignment="Left" Height="340" Margin="296,10,0,0" VerticalAlignment="Top" Width="231">
                         <Grid HorizontalAlignment="Left" Margin="0,0,-2,-13.667" Width="210">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="97*"/>
+                                <ColumnDefinition Width="113*"/>
+                            </Grid.ColumnDefinitions>
                             <Label Content="Paciente" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top"/>
-                            <TextBox HorizontalAlignment="Left" Height="23" Margin="80,10,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+                            <TextBox x:Name="txtBox_PacienteVisita_Paciente" HorizontalAlignment="Left" Height="23" Margin="80,10,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Grid.ColumnSpan="2"/>
                             <Label Content="Doctor" HorizontalAlignment="Left" Margin="10,54,0,0" VerticalAlignment="Top"/>
-                            <TextBox HorizontalAlignment="Left" Height="23" Margin="80,54,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+                            <TextBox x:Name="txtBox_PacienteVisita_Doctor" HorizontalAlignment="Left" Height="23" Margin="80,54,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Grid.ColumnSpan="2"/>
                             <Label Content="Fecha" HorizontalAlignment="Left" Margin="10,95,0,0" VerticalAlignment="Top"/>
-                            <TextBox HorizontalAlignment="Left" Height="23" Margin="80,95,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+                            <TextBox x:Name="txtBox_PacienteVisita_Fecha" HorizontalAlignment="Left" Height="23" Margin="80,95,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Grid.ColumnSpan="2"/>
                             <Label Content="Medicina" HorizontalAlignment="Left" Margin="10,136,0,0" VerticalAlignment="Top"/>
-                            <TextBox HorizontalAlignment="Left" Height="23" Margin="80,136,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
-                            <Button x:Name="btn_Visitar" Content="Visitar" HorizontalAlignment="Left" Margin="67,178,0,0" VerticalAlignment="Top" Width="75" Click="btn_Visitar_Click"/>
+                            <TextBox x:Name="txtBox_PacienteVisita_Medicina" HorizontalAlignment="Left" Height="23" Margin="80,136,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Grid.ColumnSpan="2"/>
+                            <Button x:Name="btn_Visitar" Content="Visitar" HorizontalAlignment="Left" Margin="64,284,0,0" VerticalAlignment="Top" Width="75" Click="btn_Visitar_Click" Grid.ColumnSpan="2"/>
+                            <TextBox x:Name="txtBox_PacienteVisita_Desde" HorizontalAlignment="Left" Height="23" Margin="80,173,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Grid.ColumnSpan="2"/>
+                            <TextBox x:Name="txtBox_PacienteVisita_Hasta" HorizontalAlignment="Left" Height="23" Margin="80,211,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Grid.ColumnSpan="2"/>
+                            <Label Content="Desde" HorizontalAlignment="Left" Margin="18,173,0,0" VerticalAlignment="Top"/>
+                            <Label Content="Hasta" HorizontalAlignment="Left" Margin="18,207,0,0" VerticalAlignment="Top"/>
+                            <Label Content="Dosis" HorizontalAlignment="Left" Margin="20,246,0,0" VerticalAlignment="Top"/>
+                            <TextBox x:Name="txtBox_PacienteVisita_Dosis" HorizontalAlignment="Left" Height="23" Margin="80,249,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Grid.ColumnSpan="2"/>
                         </Grid>
                     </GroupBox>
-                    <GroupBox Header="Persona conoce Persona" HorizontalAlignment="Left" Height="229" Margin="532,10,0,0" VerticalAlignment="Top" Width="233">
+                    <GroupBox Header="Persona conoce Persona" HorizontalAlignment="Left" Height="148" Margin="532,10,0,0" VerticalAlignment="Top" Width="233">
                         <Grid Margin="0,0,-1.667,-3">
-                            <TextBox HorizontalAlignment="Left" Height="23" Margin="89,14,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
-                            <TextBox HorizontalAlignment="Left" Height="23" Margin="89,47,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+                            <TextBox x:Name="txtBox_ConectarPersonas_P0" HorizontalAlignment="Left" Height="23" Margin="89,14,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+                            <TextBox x:Name="txtBox_ConectarPersonas_P1" HorizontalAlignment="Left" Height="23" Margin="89,47,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
                             <Label Content="Persona" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top"/>
                             <Label Content="Otra Persona" HorizontalAlignment="Left" Margin="10,47,0,0" VerticalAlignment="Top"/>
                             <Button x:Name="btn_PersonaConocePersona" Content="Agregar" HorizontalAlignment="Left" Margin="73,86,0,0" VerticalAlignment="Top" Width="75" Click="btn_PersonaConocePersona_Click"/>
+                        </Grid>
+                    </GroupBox>
+                    <GroupBox Header="Agregar Medicina" HorizontalAlignment="Left" Height="131" Margin="527,163,0,0" VerticalAlignment="Top" Width="233">
+                        <Grid HorizontalAlignment="Left" Margin="0,0,-1.667,-1.667" Width="223">
+                            <Button x:Name="btn_AgregarMedicina" Content="Agregar" HorizontalAlignment="Left" Margin="72,79,0,0" VerticalAlignment="Top" Width="75" Click="btn_AgregarMedicina_Click"/>
+                            <Label Content="Nombre" HorizontalAlignment="Left" Margin="10,13,0,0" VerticalAlignment="Top"/>
+                            <TextBox x:Name="txtBox_AgregarMedicina_Nombre" HorizontalAlignment="Left" Height="23" Margin="72,17,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
                         </Grid>
                     </GroupBox>
                 </Grid>
