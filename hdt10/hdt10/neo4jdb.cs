@@ -97,11 +97,28 @@ namespace hdt10
                 {
                     var result = tx.Run("MATCH (p0 {nombre:$person0}), " +
                         "(p1 {nombre:$person1}) " +  
-                        "CREATE (p0)-[:CONOCE]->(p1) RETURN p0",
+                        "CREATE (p0)-[:CONOCE]->(p1)-[:CONOCE]->(p0) RETURN p0",
                         new { person0, person1 });
                     return result.Single()[0].As<string>();
                 });
             }
+        }
+
+        public IList<string> GetDoctorWithSpecialty(string especialidad)
+        {
+            List<string> results = new List<string>();
+            using (var session = driver.Session())
+            {
+                session.WriteTransaction(tx =>
+                {
+                    var result = tx.Run("MATCH (d:Doctor) " +
+                        "WHERE d.especialidad = $especialidad " +
+                        "RETURN d.nombre as nombre", new { especialidad });
+                    foreach (var record in result)
+                        results.Add(record["nombre"].As<string>());
+                });
+            }
+            return results;
         }
 
         public void Dispose()

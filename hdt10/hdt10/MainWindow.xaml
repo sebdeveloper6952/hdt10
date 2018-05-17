@@ -74,7 +74,24 @@
                 </Grid>
             </TabItem>
             <TabItem Header="Consultas">
-                <Grid Background="#FFE5E5E5"/>
+                <Grid Background="#FFE5E5E5">
+                    <GroupBox Header="Buscar Doctor por Especialidad" HorizontalAlignment="Left" Height="360" Margin="10,10,0,0" VerticalAlignment="Top" Width="263">
+                        <Grid Margin="0,0,-1.667,-1">
+                            <Button x:Name="btn_BuscarDoctor_Buscar" Content="Buscar" HorizontalAlignment="Left" Margin="86,55,0,0" VerticalAlignment="Top" Width="75" Click="btn_BuscarDoctor_Buscar_Click"/>
+                            <Label Content="Especialidad" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top"/>
+                            <TextBox x:Name="txtBox_BuscarDoctor_Especialidad" HorizontalAlignment="Left" Height="23" Margin="103,13,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="132"/>
+                            <ScrollViewer HorizontalAlignment="Left" Height="232" Margin="10,96,0,0" VerticalAlignment="Top" Width="233">
+                                <ListView x:Name="lView_Doctores" Height="226" Width="210">
+                                    <ListView.View>
+                                        <GridView>
+                                            <GridViewColumn Header="Nombre" Width="210"/>
+                                        </GridView>
+                                    </ListView.View>
+                                </ListView>
+                            </ScrollViewer>
+                        </Grid>
+                    </GroupBox>
+                </Grid>
             </TabItem>
         </TabControl>
 

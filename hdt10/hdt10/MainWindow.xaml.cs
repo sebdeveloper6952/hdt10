@@ -109,5 +109,20 @@ namespace hdt10
             neo4jdb.instance.AddMedicine(nombre);
             MessageBox.Show("Conexión entre personas agregada...", "Mensaje", MessageBoxButton.OK, MessageBoxImage.Information);
         }
+
+        private void btn_BuscarDoctor_Buscar_Click(object sender, RoutedEventArgs e)
+        {
+            string especialidad = txtBox_BuscarDoctor_Especialidad.Text;
+            if (string.IsNullOrEmpty(especialidad)) return;
+            IList<string> results = neo4jdb.instance.GetDoctorWithSpecialty(especialidad);
+            // limpiar list view
+            lView_Doctores.Items.Clear();
+            foreach (var doctor in results)
+            {
+                // mostrar en list view
+                lView_Doctores.Items.Add(doctor);
+                Console.WriteLine(doctor);
+            }
+        }
     }
 }
