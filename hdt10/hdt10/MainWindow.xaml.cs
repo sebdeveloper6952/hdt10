@@ -114,7 +114,15 @@ namespace hdt10
         {
             string especialidad = txtBox_BuscarDoctor_Especialidad.Text;
             if (string.IsNullOrEmpty(especialidad)) return;
-            neo4jdb.instance.GetDoctorWithSpecialty(especialidad);
+            IList<string> results = neo4jdb.instance.GetDoctorWithSpecialty(especialidad);
+            // limpiar list view
+            lView_Doctores.Items.Clear();
+            foreach (var doctor in results)
+            {
+                // mostrar en list view
+                lView_Doctores.Items.Add(doctor);
+                Console.WriteLine(doctor);
+            }
         }
     }
 }
