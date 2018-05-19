@@ -9,6 +9,7 @@ namespace hdt10
 {
     public class neo4jdb : IDisposable
     {
+        // singleton
         public static neo4jdb instance = new neo4jdb("bolt://localhost:7687", "neo4j", "pass123");
         private readonly IDriver driver;
 
@@ -17,6 +18,11 @@ namespace hdt10
             driver = GraphDatabase.Driver(uri, AuthTokens.Basic(user, password));
         }
 
+        /// <summary>
+        /// Agrega un paciente con los datos especificados a la base de datos.
+        /// </summary>
+        /// <param name="nombre"></param>
+        /// <param name="telefono"></param>
         public void AddPatient(string nombre, string telefono)
         {
             using (var session = driver.Session())
@@ -34,6 +40,13 @@ namespace hdt10
             }
         }
 
+        /// <summary>
+        /// Agrega un doctor con los datos especificados a la base de datos.
+        /// </summary>
+        /// <param name="nombre"></param>
+        /// <param name="colegiado"></param>
+        /// <param name="especialidad"></param>
+        /// <param name="telefono"></param>
         public void AddDoctor(string nombre, string colegiado, string especialidad,
             string telefono)
         {
@@ -54,6 +67,10 @@ namespace hdt10
             }
         }
 
+        /// <summary>
+        /// Agrega una medicina con los datos especificados a la base de datos.
+        /// </summary>
+        /// <param name="nombre"></param>
         public void AddMedicine(string nombre)
         {
             using (var session = driver.Session())
@@ -70,6 +87,17 @@ namespace hdt10
             }
         }
 
+        /// <summary>
+        /// Relaciona un paciente con un doctor (VISITA), un paciente con una
+        /// medicina (TOMA) y un doctor con una medicina (PRESCRIBE).
+        /// </summary>
+        /// <param name="paciente"></param>
+        /// <param name="doctor"></param>
+        /// <param name="medicina"></param>
+        /// <param name="fecha"></param>
+        /// <param name="desde"></param>
+        /// <param name="hasta"></param>
+        /// <param name="dosis"></param>
         public void PatientVisitsDoctor(string paciente, string doctor, string medicina,
             string fecha, string desde, string hasta, string dosis)
         {
@@ -92,6 +120,11 @@ namespace hdt10
                 }
         }
 
+        /// <summary>
+        /// Agrega una relacion entre dos personas (CONOCE).
+        /// </summary>
+        /// <param name="person0"></param>
+        /// <param name="person1"></param>
         public void ConnectPersons(string person0, string person1)
         {
             using (var session = driver.Session())
@@ -107,6 +140,12 @@ namespace hdt10
             }
         }
 
+        /// <summary>
+        /// Busca doctores con una especialidad especifica.
+        /// especifica.
+        /// </summary>
+        /// <param name="especialidad"></param>
+        /// <returns></returns>
         public IList<string> GetDoctorWithSpecialty(string especialidad)
         {
             List<string> results = new List<string>();
@@ -124,6 +163,12 @@ namespace hdt10
             return results;
         }
 
+        /// <summary>
+        /// Recomendacion para pacientes, de doctores con una especialidad
+        /// especifica.
+        /// </summary>
+        /// <param name="persona"></param>
+        /// <returns></returns>
         public IList<string> RecommendDoctors(string persona)
         {
             List<string> results = new List<string>();
@@ -141,6 +186,12 @@ namespace hdt10
             return results;
         }
 
+        /// <summary>
+        /// Recomendacion para doctores, de pacientes.
+        /// </summary>
+        /// <param name="doctor"></param>
+        /// <param name="especialidad"></param>
+        /// <returns></returns>
         public IList<string> RecommendPatients(string doctor, string especialidad)
         {
             List<string> results = new List<string>();
