@@ -14,22 +14,22 @@
                         <Grid HorizontalAlignment="Left" Width="271" Margin="0,0,-2.333,-13.333">
                             <Label x:Name="lbl_NombrePaciente" Content="Nombre" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top"/>
                             <Label Content="Telefono" HorizontalAlignment="Left" Margin="10,41,0,0" VerticalAlignment="Top"/>
-                            <TextBox x:Name="txtBox_AgregarPaciente_Nombre" HorizontalAlignment="Left" Height="23" Margin="100,10,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
-                            <TextBox x:Name="txtBox_AgregarPaciente_Tel" HorizontalAlignment="Left" Height="23" Margin="100,45,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
-                            <Button x:Name="bnt_AgregarPaciente" Content="Agregar" HorizontalAlignment="Left" Margin="89,83,0,0" VerticalAlignment="Top" Width="75" Click="bnt_AgregarPaciente_Click"/>
+                            <TextBox TabIndex="0" x:Name="txtBox_AgregarPaciente_Nombre" HorizontalAlignment="Left" Height="23" Margin="100,10,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+                            <TextBox TabIndex="1" x:Name="txtBox_AgregarPaciente_Tel" HorizontalAlignment="Left" Height="23" Margin="100,45,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+                            <Button TabIndex="2" x:Name="bnt_AgregarPaciente" Content="Agregar" HorizontalAlignment="Left" Margin="89,83,0,0" VerticalAlignment="Top" Width="75" Click="bnt_AgregarPaciente_Click"/>
                         </Grid>
                     </GroupBox>
                     <GroupBox x:Name="grBox_Doctor" Header="Agregar Doctor" HorizontalAlignment="Left" Height="235" Margin="10,152,0,0" VerticalAlignment="Top" Width="281">
                         <Grid HorizontalAlignment="Left" Width="271" Margin="0,0,-2.333,-13.667">
                             <Label Content="Nombre" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top"/>
                             <Label Content="Colegiado" HorizontalAlignment="Left" Margin="10,49,0,0" VerticalAlignment="Top"/>
-                            <TextBox x:Name="txtBox_AgregarDoctor_Nombre" HorizontalAlignment="Left" Height="23" Margin="99,14,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
-                            <TextBox x:Name="txtBox_AgregarDoctor_Col" HorizontalAlignment="Left" Height="23" Margin="99,52,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+                            <TextBox TabIndex="3" x:Name="txtBox_AgregarDoctor_Nombre" HorizontalAlignment="Left" Height="23" Margin="99,14,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+                            <TextBox TabIndex="4" x:Name="txtBox_AgregarDoctor_Col" HorizontalAlignment="Left" Height="23" Margin="99,52,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
                             <Label Content="Especialidad" HorizontalAlignment="Left" Margin="10,89,0,0" VerticalAlignment="Top"/>
-                            <TextBox x:Name="txtBox_AgregarDoctor_Esp" HorizontalAlignment="Left" Height="23" Margin="99,92,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
-                            <TextBox x:Name="txtBox_AgregarDoctor_Tel" HorizontalAlignment="Left" Height="23" Margin="99,132,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+                            <TextBox TabIndex="5" x:Name="txtBox_AgregarDoctor_Esp" HorizontalAlignment="Left" Height="23" Margin="99,92,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+                            <TextBox TabIndex="6" x:Name="txtBox_AgregarDoctor_Tel" HorizontalAlignment="Left" Height="23" Margin="99,132,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
                             <Label Content="Telefono" HorizontalAlignment="Left" Margin="10,130,0,0" VerticalAlignment="Top" Width="64"/>
-                            <Button x:Name="btn_AgregarDoctores" Content="Agregar" HorizontalAlignment="Left" Margin="89,172,0,0" VerticalAlignment="Top" Width="75" Click="btn_AgregarDoctores_Click"/>
+                            <Button TabIndex="7" x:Name="btn_AgregarDoctores" Content="Agregar" HorizontalAlignment="Left" Margin="89,172,0,0" VerticalAlignment="Top" Width="75" Click="btn_AgregarDoctores_Click"/>
                         </Grid>
                     </GroupBox>
                     <GroupBox Header="Paciente Visita Doctor" HorizontalAlignment="Left" Height="340" Margin="296,10,0,0" VerticalAlignment="Top" Width="231">
@@ -39,36 +39,36 @@
                                 <ColumnDefinition Width="113*"/>
                             </Grid.ColumnDefinitions>
                             <Label Content="Paciente" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top"/>
-                            <TextBox x:Name="txtBox_PacienteVisita_Paciente" HorizontalAlignment="Left" Height="23" Margin="80,10,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Grid.ColumnSpan="2"/>
+                            <TextBox TabIndex="8" x:Name="txtBox_PacienteVisita_Paciente" HorizontalAlignment="Left" Height="23" Margin="80,10,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Grid.ColumnSpan="2"/>
                             <Label Content="Doctor" HorizontalAlignment="Left" Margin="10,54,0,0" VerticalAlignment="Top"/>
-                            <TextBox x:Name="txtBox_PacienteVisita_Doctor" HorizontalAlignment="Left" Height="23" Margin="80,54,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Grid.ColumnSpan="2"/>
+                            <TextBox TabIndex="9" x:Name="txtBox_PacienteVisita_Doctor" HorizontalAlignment="Left" Height="23" Margin="80,54,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Grid.ColumnSpan="2"/>
                             <Label Content="Fecha" HorizontalAlignment="Left" Margin="10,95,0,0" VerticalAlignment="Top"/>
-                            <TextBox x:Name="txtBox_PacienteVisita_Fecha" HorizontalAlignment="Left" Height="23" Margin="80,95,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Grid.ColumnSpan="2"/>
+                            <TextBox TabIndex="10" x:Name="txtBox_PacienteVisita_Fecha" HorizontalAlignment="Left" Height="23" Margin="80,95,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Grid.ColumnSpan="2"/>
                             <Label Content="Medicina" HorizontalAlignment="Left" Margin="10,136,0,0" VerticalAlignment="Top"/>
-                            <TextBox x:Name="txtBox_PacienteVisita_Medicina" HorizontalAlignment="Left" Height="23" Margin="80,136,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Grid.ColumnSpan="2"/>
-                            <Button x:Name="btn_Visitar" Content="Visitar" HorizontalAlignment="Left" Margin="64,284,0,0" VerticalAlignment="Top" Width="75" Click="btn_Visitar_Click" Grid.ColumnSpan="2"/>
-                            <TextBox x:Name="txtBox_PacienteVisita_Desde" HorizontalAlignment="Left" Height="23" Margin="80,173,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Grid.ColumnSpan="2"/>
-                            <TextBox x:Name="txtBox_PacienteVisita_Hasta" HorizontalAlignment="Left" Height="23" Margin="80,211,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Grid.ColumnSpan="2"/>
+                            <TextBox TabIndex="11" x:Name="txtBox_PacienteVisita_Medicina" HorizontalAlignment="Left" Height="23" Margin="80,136,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Grid.ColumnSpan="2"/>
+                            <Button TabIndex="15" x:Name="btn_Visitar" Content="Visitar" HorizontalAlignment="Left" Margin="64,284,0,0" VerticalAlignment="Top" Width="75" Click="btn_Visitar_Click" Grid.ColumnSpan="2"/>
+                            <TextBox TabIndex="12" x:Name="txtBox_PacienteVisita_Desde" HorizontalAlignment="Left" Height="23" Margin="80,173,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Grid.ColumnSpan="2"/>
+                            <TextBox TabIndex="13" x:Name="txtBox_PacienteVisita_Hasta" HorizontalAlignment="Left" Height="23" Margin="80,211,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Grid.ColumnSpan="2"/>
                             <Label Content="Desde" HorizontalAlignment="Left" Margin="18,173,0,0" VerticalAlignment="Top"/>
                             <Label Content="Hasta" HorizontalAlignment="Left" Margin="18,207,0,0" VerticalAlignment="Top"/>
                             <Label Content="Dosis" HorizontalAlignment="Left" Margin="20,246,0,0" VerticalAlignment="Top"/>
-                            <TextBox x:Name="txtBox_PacienteVisita_Dosis" HorizontalAlignment="Left" Height="23" Margin="80,249,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Grid.ColumnSpan="2"/>
+                            <TextBox TabIndex="14" x:Name="txtBox_PacienteVisita_Dosis" HorizontalAlignment="Left" Height="23" Margin="80,249,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Grid.ColumnSpan="2"/>
                         </Grid>
                     </GroupBox>
                     <GroupBox Header="Persona conoce Persona" HorizontalAlignment="Left" Height="148" Margin="532,10,0,0" VerticalAlignment="Top" Width="233">
                         <Grid Margin="0,0,-1.667,-3">
-                            <TextBox x:Name="txtBox_ConectarPersonas_P0" HorizontalAlignment="Left" Height="23" Margin="89,14,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
-                            <TextBox x:Name="txtBox_ConectarPersonas_P1" HorizontalAlignment="Left" Height="23" Margin="89,47,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+                            <TextBox TabIndex="16" x:Name="txtBox_ConectarPersonas_P0" HorizontalAlignment="Left" Height="23" Margin="89,14,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+                            <TextBox TabIndex="17" x:Name="txtBox_ConectarPersonas_P1" HorizontalAlignment="Left" Height="23" Margin="89,47,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
                             <Label Content="Persona" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top"/>
                             <Label Content="Otra Persona" HorizontalAlignment="Left" Margin="10,47,0,0" VerticalAlignment="Top"/>
-                            <Button x:Name="btn_PersonaConocePersona" Content="Agregar" HorizontalAlignment="Left" Margin="73,86,0,0" VerticalAlignment="Top" Width="75" Click="btn_PersonaConocePersona_Click"/>
+                            <Button TabIndex="18" x:Name="btn_PersonaConocePersona" Content="Agregar" HorizontalAlignment="Left" Margin="73,86,0,0" VerticalAlignment="Top" Width="75" Click="btn_PersonaConocePersona_Click"/>
                         </Grid>
                     </GroupBox>
                     <GroupBox Header="Agregar Medicina" HorizontalAlignment="Left" Height="131" Margin="527,163,0,0" VerticalAlignment="Top" Width="233">
                         <Grid HorizontalAlignment="Left" Margin="0,0,-1.667,-1.667" Width="223">
-                            <Button x:Name="btn_AgregarMedicina" Content="Agregar" HorizontalAlignment="Left" Margin="72,79,0,0" VerticalAlignment="Top" Width="75" Click="btn_AgregarMedicina_Click"/>
+                            <Button TabIndex="20" x:Name="btn_AgregarMedicina" Content="Agregar" HorizontalAlignment="Left" Margin="72,79,0,0" VerticalAlignment="Top" Width="75" Click="btn_AgregarMedicina_Click"/>
                             <Label Content="Nombre" HorizontalAlignment="Left" Margin="10,13,0,0" VerticalAlignment="Top"/>
-                            <TextBox x:Name="txtBox_AgregarMedicina_Nombre" HorizontalAlignment="Left" Height="23" Margin="72,17,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+                            <TextBox TabIndex="19" x:Name="txtBox_AgregarMedicina_Nombre" HorizontalAlignment="Left" Height="23" Margin="72,17,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
                         </Grid>
                     </GroupBox>
                 </Grid>
@@ -77,9 +77,9 @@
                 <Grid Background="#FFE5E5E5">
                     <GroupBox Header="Buscar Doctor por Especialidad" HorizontalAlignment="Left" Height="360" Margin="10,10,0,0" VerticalAlignment="Top" Width="263">
                         <Grid Margin="0,0,-1.667,-1">
-                            <Button x:Name="btn_BuscarDoctor_Buscar" Content="Buscar" HorizontalAlignment="Left" Margin="86,55,0,0" VerticalAlignment="Top" Width="75" Click="btn_BuscarDoctor_Buscar_Click"/>
+                            <Button TabIndex="22" x:Name="btn_BuscarDoctor_Buscar" Content="Buscar" HorizontalAlignment="Left" Margin="86,55,0,0" VerticalAlignment="Top" Width="75" Click="btn_BuscarDoctor_Buscar_Click"/>
                             <Label Content="Especialidad" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top"/>
-                            <TextBox x:Name="txtBox_BuscarDoctor_Especialidad" HorizontalAlignment="Left" Height="23" Margin="103,13,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="132"/>
+                            <TextBox TabIndex="21" x:Name="txtBox_BuscarDoctor_Especialidad" HorizontalAlignment="Left" Height="23" Margin="103,13,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="132"/>
                             <ScrollViewer HorizontalAlignment="Left" Height="232" Margin="10,96,0,0" VerticalAlignment="Top" Width="233">
                                 <ListView x:Name="lView_Doctores" Height="226" Width="210">
                                     <ListView.View>
@@ -89,6 +89,40 @@
                                     </ListView.View>
                                 </ListView>
                             </ScrollViewer>
+                        </Grid>
+                    </GroupBox>
+                    <GroupBox Header="Recomendar Doctores a una Persona" HorizontalAlignment="Left" Height="360" Margin="278,10,0,0" VerticalAlignment="Top" Width="263">
+                        <Grid Margin="0,0,-1.667,-1">
+                            <Button TabIndex="24" x:Name="btn_RecDoctor_Buscar" Content="Buscar" HorizontalAlignment="Left" Margin="86,55,0,0" VerticalAlignment="Top" Width="75" Click="btn_RecDoctor_Buscar_Click"/>
+                            <Label Content="Nombre" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top"/>
+                            <TextBox TabIndex="23" x:Name="txtBox_RecDoctor_NombrePersona" HorizontalAlignment="Left" Height="23" Margin="103,13,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="132"/>
+                            <ScrollViewer HorizontalAlignment="Left" Height="232" Margin="10,96,0,0" VerticalAlignment="Top" Width="233">
+                                <ListView x:Name="lView_RecDoctores" Height="226" Width="210">
+                                    <ListView.View>
+                                        <GridView>
+                                            <GridViewColumn Header="Nombre" Width="210"/>
+                                        </GridView>
+                                    </ListView.View>
+                                </ListView>
+                            </ScrollViewer>
+                        </Grid>
+                    </GroupBox>
+                    <GroupBox Header="Recomendar Pacientes a un Doctor" HorizontalAlignment="Left" Height="360" Margin="546,10,0,0" VerticalAlignment="Top" Width="263">
+                        <Grid Margin="0,0,-1.667,-1">
+                            <Button TabIndex="27" x:Name="btn_RecPacientes_Buscar" Content="Buscar" HorizontalAlignment="Left" Margin="87,71,0,0" VerticalAlignment="Top" Width="75" Click="btn_RecPacientes_Buscar_Click"/>
+                            <Label Content="Especialidad" HorizontalAlignment="Left" Margin="10,40,0,0" VerticalAlignment="Top" Width="88" Height="26"/>
+                            <TextBox TabIndex="26" x:Name="txtBox_RecPacientes_Especialidad" HorizontalAlignment="Left" Height="23" Margin="103,40,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="132"/>
+                            <ScrollViewer HorizontalAlignment="Left" Height="232" Margin="10,96,0,0" VerticalAlignment="Top" Width="233">
+                                <ListView x:Name="lView_RecPacientes" Height="226" Width="210">
+                                    <ListView.View>
+                                        <GridView>
+                                            <GridViewColumn Header="Nombre" Width="210"/>
+                                        </GridView>
+                                    </ListView.View>
+                                </ListView>
+                            </ScrollViewer>
+                            <Label Content="Nombre Doctor" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top"/>
+                            <TextBox TabIndex="25" x:Name="txtBox_RecPacientes_NombreDoctor" HorizontalAlignment="Left" Height="23" Margin="103,10,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="132"/>
                         </Grid>
                     </GroupBox>
                 </Grid>
