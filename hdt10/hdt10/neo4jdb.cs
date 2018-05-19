@@ -73,20 +73,23 @@ namespace hdt10
         public void PatientVisitsDoctor(string paciente, string doctor, string medicina,
             string fecha, string desde, string hasta, string dosis)
         {
-            using (var session = driver.Session())
-            {
-                var person = session.WriteTransaction(tx =>
+                using (var session = driver.Session())
                 {
-                    var result = tx.Run("MATCH (p:Paciente {nombre:$paciente}), " + 
-                        "(d:Doctor {nombre:$doctor}), " + 
-                        "(m:Medicina {nombre:$medicina}) " +
-                        "CREATE (p)-[:VISITA {fecha:$fecha}]->(d)" + 
-                        "-[:PRESCRIBE {desde:$desde, hasta:$hasta, dosis:$dosis}]->(m)<-[:TOMA]-(p) RETURN p",
-                        new { paciente, doctor, medicina, fecha, desde, hasta, dosis });
-                    return result.Single()[0].As<string>();
-                });
-                Console.WriteLine(person);
-            }
+                    var person = session.WriteTransaction(tx =>
+                    {
+                        try
+                        {
+                            var result = tx.Run("MATCH (p:Paciente {nombre:$paciente}), " +
+                                "(d:Doctor {nombre:$doctor}), " +
+                                "(m:Medicina {nombre:$medicina}) " +
+                                "CREATE (p)-[:VISITA {fecha:$fecha}]->(d)" +
+                                "-[:PRESCRIBE {desde:$desde, hasta:$hasta, dosis:$dosis}]->(m)<-[:TOMA]-(p) RETURN p",
+                                new { paciente, doctor, medicina, fecha, desde, hasta, dosis });
+                            return result.Single()[0].As<string>();
+                        }
+                        catch (Exception e) { return null; }
+                    });
+                }
         }
 
         public void ConnectPersons(string person0, string person1)
@@ -97,7 +100,7 @@ namespace hdt10
                 {
                     var result = tx.Run("MATCH (p0 {nombre:$person0}), " +
                         "(p1 {nombre:$person1}) " +  
-                        "CREATE (p0)-[:CONOCE]->(p1)-[:CONOCE]->(p0) RETURN p0",
+                        "CREATE (p0)-[:CONOCE]->(p1)-[:CONOCE]->(p0) RETURN p0.nombre as nombre",
                         new { person0, person1 });
                     return result.Single()[0].As<string>();
                 });
@@ -114,6 +117,40 @@ namespace hdt10
                     var result = tx.Run("MATCH (d:Doctor) " +
                         "WHERE d.especialidad = $especialidad " +
                         "RETURN d.nombre as nombre", new { especialidad });
+                    foreach (var record in result)
+                        results.Add(record["nombre"].As<string>());
+                });
+            }
+            return results;
+        }
+
+        public IList<string> RecommendDoctors(string persona)
+        {
+            List<string> results = new List<string>();
+            using (var session = driver.Session())
+            {
+                session.WriteTransaction(tx =>
+                {
+                var result = tx.Run("MATCH (p:Paciente {nombre:$persona})" +
+                    "-[:CONOCE*1..2]->(amigo)-[:VISITA]->" +
+                    "(doc:Doctor) return doc.nombre as nombre", new { persona });
+                    foreach (var record in result)
+                        results.Add(record["nombre"].As<string>());
+                });
+            }
+            return results;
+        }
+
+        public IList<string> RecommendPatients(string doctor, string especialidad)
+        {
+            List<string> results = new List<string>();
+            using (var session = driver.Session())
+            {
+                session.WriteTransaction(tx =>
+                {
+                    var result = tx.Run("MATCH (d:Doctor {nombre:$doctor}), " + 
+                        "(d)-[:CONOCE*1..2]->(doc:Doctor {especialidad:$especialidad}) " + 
+                        "RETURN distinct doc.nombre as nombre", new { doctor, especialidad });
                     foreach (var record in result)
                         results.Add(record["nombre"].As<string>());
                 });
